@@ -19,4 +19,13 @@ class ArticlesController extends Controller
         return view('articles.index')->with('articles', $articles);
     }
 
+     public function show($id){
+        $article = Article::findorFail($id);
+
+        if (is_null($article)){
+            abort(404);
+        }
+        return view ('articles.show', compact('article'));
+    }
+
 }
