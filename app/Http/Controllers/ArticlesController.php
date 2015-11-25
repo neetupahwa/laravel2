@@ -16,7 +16,7 @@ class ArticlesController extends Controller
    
     public function index()
     {
-        $articles = Article::latest()->get();
+        $articles = Article::latest('published_at')->get();
         
         return view('articles.index')->with('articles', $articles);
     }
